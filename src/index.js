@@ -1,13 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter} from 'react-router-dom';
+import './index.scss'
+import {combineReducers, configureStore} from '@reduxjs/toolkit'
+import AlertSlice from './redux/AlertSlice';
+import GitHubSlice from './redux/GitHubSlice';
+
+import { Provider } from 'react-redux';
+
+
+const rootReducer = combineReducers({
+    AlertSlice: AlertSlice,
+    GitHubSlice: GitHubSlice
+
+  })
+export const store = configureStore({
+    reducer: rootReducer
+})
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}> 
+      <BrowserRouter>
+        <App/>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

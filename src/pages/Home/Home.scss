@@ -1,0 +1,10 @@
+.cards{
+    display: grid;
+    padding-top: 30px;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px
+}
+
+.search-container{
+    width: 70%;
+}
